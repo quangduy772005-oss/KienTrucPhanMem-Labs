@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: eda-rabbitmq
+    ports:
+      - "5672:5672"     # Cổng kết nối AMQP cho ứng dụng EDA
+      - "15672:15672"   # Cổng giao diện quản trị Web (truy cập http://localhost:15672 với user: guest, pass: guest)
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: unless-stopped
